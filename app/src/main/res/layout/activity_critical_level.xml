@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#c9c9c9"
+
+    android:fillViewport="false">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+
+
+        <ImageView android:src="@drawable/icon"
+            android:layout_width="1164dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.28"
+            android:background="#00ffffff" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="176dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+
+                android:id="@+id/precent"
+                android:textSize="30dp"
+                android:textColor="#13395d"
+                android:layout_gravity="center" />
+
+            <SeekBar
+                android:layout_width="308dp"
+                android:layout_height="70dp"
+                android:id="@+id/seekBar"
+                android:max="80"
+                android:layerType="software"
+                android:theme="@style/AppTheme.SeekBar"
+
+                android:layout_gravity="center_horizontal|bottom" />
+
+
+        </FrameLayout>
+
+
+        <ImageButton
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/po"
+            android:background="#00ffffff"
+            android:padding="40dp"
+            android:layout_gravity="center_horizontal|bottom" />
+    </LinearLayout>
+
+
+</ScrollView>
