@@ -29,6 +29,9 @@ import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 
 /**
  * Created by stas on 11/09/16.
+ /**
+ * 1.Start the service
+ * 2.Register the receiver which triggers event when battery charge is changed
  */
 
 public class MainActivity extends Activity {
@@ -43,11 +46,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-/**
- * 1.Start the service
- * 2.Register the receiver which triggers event when battery charge is changed
- */
-
 
         Intent serviceIntent = new Intent(this, MyService.class);
         startService(serviceIntent);
@@ -59,7 +57,6 @@ public class MainActivity extends Activity {
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         //get battery critical level
         String defaultLevel = prefs.getString("defaultLevel", null);
-
         ProgressBar pb = (ProgressBar) findViewById(R.id.progressbar);
         //Set progress level with battery % value
         pb.setProgress(Integer.parseInt(defaultLevel));
@@ -92,10 +89,12 @@ public class MainActivity extends Activity {
             }
         });
 
+
+
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
         circleMenu.setMainMenu(Color.parseColor("#258CFF"), R.mipmap.icon_setting, R.mipmap.icon_cancel)
                 .addSubMenu(Color.parseColor("#258CFF"), R.mipmap.icon_home)
-                .addSubMenu(Color.parseColor("#30A400"), R.mipmap.icon_notify) //sms
+                .addSubMenu(Color.parseColor("#30A400"), R.mipmap.icon_notify)
                 .addSubMenu(Color.parseColor("#FF6A00"), R.mipmap.icon_setting)
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
 
@@ -142,6 +141,7 @@ public class MainActivity extends Activity {
 
     }
 
+
     //Create Broadcast Receiver Object along with class definition
     private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
         @Override
@@ -162,6 +162,8 @@ public class MainActivity extends Activity {
     };
 
 
+//    Circle menu methods
+
     public boolean onMenuOpened(int featureId, Menu menu) {
         circleMenu.openMenu();
         return super.onMenuOpened(featureId, menu);
@@ -174,22 +176,9 @@ public class MainActivity extends Activity {
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(homeIntent);
 
-
     }
 
-    public void sendSMS(String phoneNo, String msg) {
-        try {
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneNo, null, msg, null, null);
-            Toast.makeText(getApplicationContext(), " Message Sent  ",
-                    Toast.LENGTH_LONG).show();
-        } catch (Exception ex) {
 
-            Toast.makeText(getApplicationContext(), ex.getMessage().toString(),
-                    Toast.LENGTH_LONG).show();
-            ex.printStackTrace();
-        }
-    }
 }
 
 

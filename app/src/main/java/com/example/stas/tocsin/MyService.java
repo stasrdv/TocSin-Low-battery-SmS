@@ -19,13 +19,15 @@ import android.widget.Toast;
  * Created by stas on 09/09/16.
  *
  * This is my Unbound service class
+ *
+ *
+ * Send the automatic SmS message,show notification before.
  */
 public class MyService extends Service {
 
 
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     boolean sent = false;
-
     public void onCreate() {
 
         super.onCreate();
@@ -46,6 +48,8 @@ public class MyService extends Service {
          */
     }
 
+
+//    Here we send the SmS if the critical level is under current level.
 
     private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
         @Override
@@ -99,6 +103,7 @@ public class MyService extends Service {
             ex.printStackTrace();
         }
     }
+
 
     private void addNotification() {
         NotificationCompat.Builder builder =

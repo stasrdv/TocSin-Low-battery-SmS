@@ -7,7 +7,7 @@ import android.content.Intent;
 /**
  * Created by stas on 11/09/16.
  *
- * This class will start the service on start up
+ * This class will start the service on start up (after device boot)
  */
 
 public class StartMyServiceAtBootReceiver  extends BroadcastReceiver {

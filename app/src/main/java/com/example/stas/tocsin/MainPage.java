@@ -23,8 +23,11 @@ import android.widget.Toast;
 
 /**
  * Created by stas on 12/09/16.
- * <p>
- * This is my "Welcome" page,we see it only once after the install
+ *
+ * This is my "Welcome" page,we see it only once after the install****
+ *
+ * if you denied the SMS permissions,app will exit
+ * if phone and Sms fields are not empty,go to MainActivity
  */
 public class MainPage extends Activity {
 
@@ -41,7 +44,7 @@ public class MainPage extends Activity {
         setContentView(R.layout.activity_main_page);
 
 /**
- *Beginning in Android 6.0 (API level 23),
+ *  Beginning in Android 6.0 (API level 23),
  * users grant permissions to apps while the app is running,
  * not when they install the app.
  */
@@ -49,7 +52,7 @@ public class MainPage extends Activity {
             askForPermission(Manifest.permission.SEND_SMS, 1);
         }
 
-
+//      Check if this is your first instance.
         SharedPreferences preferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         String phone = preferences.getString("phone", null);
         if (phone != null) {
@@ -175,6 +178,7 @@ public class MainPage extends Activity {
                     finish();
                     System.exit(0);
 
+
                 }
                 return;
             }
@@ -187,7 +191,7 @@ public class MainPage extends Activity {
         Toast.makeText(MainPage.this, "Please fill all required fields  ! ", Toast.LENGTH_SHORT).show();
 
     }
-
+    //animatiom
     public void animateButton(View view) {
         ImageButton submit = (ImageButton) findViewById(R.id.submit);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
